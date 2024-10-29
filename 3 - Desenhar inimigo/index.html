@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento das teclas</title>
+</head>
+<body>
+    <script src="Nave.js"></script>
+    <script>
+        var canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        var context = canvas.getContext('2d');
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+
+        var img = new Image;
+        img.src = "nave.png";
+
+        var enemyimg = new Image;
+        enemyimg.src = "enemy.png";
+
+        var nave = new Nave(100, 500);
+
+        window.onload = function()
+        {   context.drawImage(img,100,500,100,100);
+            context.drawImage(enemyimg,100,100,100,100);   
+        }
+
+        
+        document.addEventListener('keypress',movimento)
+        function movimento(event)
+        {   context.fillStyle = 'white';
+            context.fillRect(0,0,canvas.width, canvas.height);
+            if(event.key == 'a')
+            {   nave.x-=10;
+            }
+            if(event.key == 'd')
+            {   nave.x+=10;
+            }
+            nave.draw();
+            context.drawImage(enemyimg,100,100,100,100);
+        }
+    </script>
+</body>
+</html>
