@@ -6,32 +6,31 @@
     <title>Movimento das teclas</title>
 </head>
 <body>
+    <canvas id="canvas1"></canvas>
     <script src="Nave.js"></script>
     <script>
-        var canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
-        var context = canvas.getContext('2d');
+        var canvas = document.getElementById("canvas1");
+        var context = canvas.getContext("2d");
         canvas.width = innerWidth;
         canvas.height = innerHeight;
 
-        var img = new Image;
-        img.src = "nave.png";
-
-        var nave = new Nave(100, 100);
+        var nave = new Nave(100, 100, "nave.png");
 
         window.onload = function()
-        {   context.drawImage(img,100,100,100,100)   
+        {   nave.draw();   
         }
-
         
-        document.addEventListener('keypress',movimento)
+        document.addEventListener("keypress",movimento);
+
         function movimento(event)
-        {   context.fillStyle = 'white';
-            context.fillRect(0,0,canvas.width, canvas.height);
-            if(event.key == 'a')
+        {   console.log(event);
+
+            // context.fillStyle = "white";
+            // context.fillRect(0,0,canvas.width, canvas.height);
+            if(event.key == "a")
             {   nave.x-=10;
             }
-            if(event.key == 'd')
+            if(event.key == "d")
             {   nave.x+=10;
             }
             nave.draw();

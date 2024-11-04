@@ -6,5 +6,8 @@ class Enemy extends Entity
 
     update()
     {   this.x += this.velocity;
+        if(this.x+this.width > canvas.width || this.x<0)
+        {   this.velocity *= -1
+        }
     }
 }
