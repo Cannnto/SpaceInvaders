@@ -35,31 +35,23 @@ class Enemies
         {   this.list[i].update();            
         }
        
-        i=0;
         var found = false;
-        // for(i=0; i < this.list.length; i++)
-        while(i < this.list.length && found == false)
+
+        for(var i=0;(i < this.list.length && found == false); i++)
         {   if(this.list[i].x<0 || this.list[i].x+this.list[i].width>canvas.width)
             {   found = true;
             }           
-            else
-            {   i++;
-            }
-            // i++;
         }
         if(found == true)
-        {   for(i=0; i<this.list.length; i++)
+        {   for(var i=0; i<this.list.length; i++)
             {   this.list[i].reverse();
             }
         }
         
         this.bullet.draw();
         this.bullet.update();
-        if(this.bullet.collide(nave))
+        if(this.bullet.y > canvas.height || this.bullet.collide(nave))
         {   this.fire();
-        };
-        if(this.bullet.y > canvas.height)
-        {   this.fire();   
         }
     }
 }

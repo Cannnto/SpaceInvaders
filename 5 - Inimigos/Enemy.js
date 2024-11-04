@@ -8,6 +8,5 @@ class Enemy extends Entity
     }
     update()
     {   this.x += this.velocity;
-
     }
 }

@@ -21,7 +21,8 @@
         var nave = new Nave(100, 500, 100, 100, "nave.png");
         var enemies = new Enemies(100, 100, 100, 100, "enemy.png");
 
-        var timer = setInterval(loop,1000/30);
+        var FPS = 30;
+        var timer = setInterval(loop,1000/FPS);
         function loop()
         {   context.fillStyle = "white";
             context.fillRect(0,0,canvas.width, canvas.height);
