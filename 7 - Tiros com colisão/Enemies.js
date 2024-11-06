@@ -21,7 +21,7 @@ class Enemies
     }
     fire()
     {   let enemy = this.list[Math.trunc(Math.random()*(this.list.length))];
-        this.bullet = new Projectile(enemy.x, enemy.y, 10, 20);
+        this.bullet = new Projectile(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20);
     }
 
     draw()
