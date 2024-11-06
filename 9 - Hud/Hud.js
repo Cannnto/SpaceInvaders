@@ -1,8 +1,6 @@
 class Hud 
-{
-    constructor()
-    {
-        this.lifeImg = new Image;
+{   constructor()
+    {   this.lifeImg = new Image;
         this.lifeImg.src = "nave.png";
 
         this.scoreImg = new Image;
@@ -11,8 +9,7 @@ class Hud
     }
 
     draw()
-    {
-        context.font = "50px arial";
+    {   context.font = "50px arial";
         context.fillStyle = "cyan";
         context.textBaseline = 'middle';
         context.fillText(""+nave.life,50,50);

@@ -8,7 +8,6 @@ class Entity
         this.img.src = img;
     }
     draw()
-    {   
-        context.drawImage(this.img, this.x, this.y, this.width, this.height);
+    {   context.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }

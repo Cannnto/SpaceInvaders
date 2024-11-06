@@ -1,7 +1,6 @@
 class Projectile extends Entity
-{   constructor(x, y, width, height,color)
+{   constructor(x, y, width, height)
     {   super(x-width/2,y,width,height);
-        this.color = "red";
     }
     draw()
     {   context.fillStyle = this.color;
@@ -16,8 +15,9 @@ class Projectile extends Entity
 }
 
 class ProjectileEnemy extends Projectile{
-    constructor(x,y,width,height,color)
+    constructor(x,y,width,height)
     {   super(x,y,width,height);
+        this.color = "red";
     }
 
     update()
@@ -26,22 +26,16 @@ class ProjectileEnemy extends Projectile{
 }
 
 class ProjectileNave extends Projectile{
-    constructor(x,y,width,height,color)
+    constructor(x,y,width,height)
     {   super(x,y,width,height)
         this.color = "green";
     }
 
     collide(entities)
-    {
-        for(var i = 0; i < entities.length; i++)
-        {
-            if(entities[i].x + entities[i].width >= this.x &&     
-                entities[i].x <= this.x + this.width &&       
-                this.y + this.height >= entities[i].y &&       
-                this.y <= entities[i].y + entities[i].height)
-            {
-                return true;
-            }
+    {   for(var i = 0; i < entities.length; i++)
+        {   if(super.collide(entities[i]))
+            {   return true;   
+            }          
         }
     }
 
