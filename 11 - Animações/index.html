@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiros Nave</title>
+    <title>Animações</title>
 </head>
 <body>
     <canvas id="canvas1"></canvas>
@@ -12,14 +12,16 @@
     <script src="Enemies.js"></script>
     <script src="Enemy.js"></script>
     <script src="Nave.js"></script>
+    <script src="Hud.js"></script>
     <script>
         var canvas = document.getElementById("canvas1");
         var context = canvas.getContext("2d");
         canvas.width = innerWidth;
         canvas.height = innerHeight;
 
-        var nave = new Nave(100, 500, 100, 100, "nave.png");
+        var nave = new Nave(100, 500, 100, 100, "nave3.0.png");
         var enemies = new Enemies(100, 100, 100, 100, "enemy.png");
+        var hud = new Hud();
 
         var FPS = 30;
         var timer = setInterval(loop,1000/FPS);
@@ -32,6 +34,7 @@
             
             enemies.draw();
             nave.draw();
+            hud.draw();
         }
 
         document.addEventListener("keypress",movimento)

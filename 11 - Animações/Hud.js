@@ -1,11 +1,10 @@
 class Hud 
 {   constructor()
     {   this.lifeImg = new Image;
-        this.lifeImg.src = "nave.png";
+        this.lifeImg.src = "nave2.0.png";
 
         this.scoreImg = new Image;
-        this.scoreImg.src = "enemy.png";
-
+        this.scoreImg.src = "ep1.png";
     }
 
     draw()
@@ -14,11 +13,11 @@ class Hud
         context.textBaseline = "middle";
         context.fillText(nave.life,50,50);
 
-        context.drawImage(this.lifeImg,0,30,32,32)
+        context.drawImage(this.lifeImg,0,30,32,32);
         
         context.fillStyle = "purple";
         context.fillText(nave.score,50,100);
 
-        context.drawImage(this.scoreImg,0,80,32,32)
+        context.drawImage(this.scoreImg,0,80,32,32);
     }
 }
