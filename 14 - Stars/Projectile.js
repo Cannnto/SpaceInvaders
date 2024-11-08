@@ -1,6 +1,6 @@
 class Projectile extends Entity
 {   constructor(x, y, width, height)
-    {   super(x-width/2,y,width,height);
+    {   super(x-width/2,y,width,height,"");
         this.fireSound = new Audio('fireSound.wav');
         this.fireSound.play();
         this.hitSound = new Audio('hurt.wav');
