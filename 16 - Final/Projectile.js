@@ -14,7 +14,7 @@ class Projectile extends Entity
         {
             if(super.collide(walls[i]))
             {   
-                sounds.playHitSound();
+                sounds.hitSound.play();
                 walls[i].life -= 25;
                 if(walls[i].life <= 0)
                 {
@@ -35,7 +35,7 @@ class ProjectileEnemy extends Projectile{
     collide()
     {   if(super.collide(nave))
         {   nave.life -= 1;
-            sounds.playHitSound();
+            sounds.hitSound.play();
             return true;
         }
     }
@@ -56,7 +56,7 @@ class ProjectileNave extends Projectile{
         {   if(super.collide(enemies.list[i]))
             {   nave.score += 50;
                 enemies.list.splice(i,1);
-                sounds.playHitSound();
+                sounds.hitSound.play();
                 return true;
             }
         }

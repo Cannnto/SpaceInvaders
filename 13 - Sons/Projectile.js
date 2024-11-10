@@ -1,7 +1,7 @@
 class Projectile extends Entity
 {   constructor(x, y, width, height)
     {   super(x-width/2,y,width,height,"");
-        sounds.playFireSound();
+        sounds.fireSound.play();
     }
     draw()
     {   context.fillStyle = this.color;
@@ -18,8 +18,7 @@ class ProjectileEnemy extends Projectile{
     collide()
     {   if(super.collide(nave))
         {   nave.life -= 1;
-            if (nave.life == 0) nave.deathSound.play();
-            sounds.playHitSound();
+            sounds.hitSound.play();
             return true;
         }
     }
@@ -40,7 +39,7 @@ class ProjectileNave extends Projectile{
         {   if(super.collide(entities[i]))
             {   nave.score += 50;
                 entities.splice(i,1);
-                sounds.playHitSound();
+                sounds.hitSound.play();
                 return true;
             }
         }
