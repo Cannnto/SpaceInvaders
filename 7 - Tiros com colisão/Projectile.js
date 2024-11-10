@@ -1,6 +1,6 @@
 class Projectile extends Entity
 {   constructor(x, y, width, height)
-    {   super(x-width/2,y,width,height)
+    {   super(x-width/2,y,width,height,"");
     }
     draw()
     {   context.fillStyle = "red";
