@@ -7,6 +7,23 @@ class Projectile extends Entity
     {   context.fillStyle = this.color;
         context.fillRect(this.x, this.y, this.width, this.height);
     }
+
+    collideWall()
+    {
+        for(var i = 0; i < walls.length; i++)
+        {
+            if(super.collide(walls[i]))
+            {
+                sounds.playHitSound();
+                walls[i].life -= 25;
+                if(walls[i].life <= 0)
+                {
+                    walls.splice(i,1);
+                }
+                return true;
+            }
+        }
+    }
 }
 
 class ProjectileEnemy extends Projectile{
@@ -35,11 +52,11 @@ class ProjectileNave extends Projectile{
         this.color = "green";
     }
 
-    collide(entities)
-    {   for(var i = 0; i < entities.length; i++)
-        {   if(super.collide(entities[i]))
+    collide()
+    {   for(var i = 0; i < enemies.list.length; i++)
+        {   if(super.collide(enemies.list[i]))
             {   nave.score += 50;
-                entities.splice(i,1);
+                enemies.list.splice(i,1);
                 sounds.playHitSound();
                 return true;
             }

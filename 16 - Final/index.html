@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animações</title>
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
     <canvas id="canvas1"></canvas>
@@ -13,6 +19,8 @@
     <script src="Enemies.js"></script>
     <script src="Enemy.js"></script>
     <script src="Nave.js"></script>
+    <script src="Wall.js"></script>
+    <script src="Stars.js"></script>
     <script src="Hud.js"></script>
     <script>
         var canvas = document.getElementById("canvas1");
@@ -21,26 +29,38 @@
         canvas.height = innerHeight;
 
         var sounds = new Sound();
-        var nave = new Nave(100, 500, 100, 100, "nave3.0.png");
-        var enemies = new Enemies(100, 100, 100, 100, "enemy.png");
+        var nave = new Nave(100, 650, 100, 100, "nave3.0.png");
+        var enemies = new Enemies(100, 100, 100, 100);
         var hud = new Hud();
+        var stars = new Stars(50);
+
+        var walls = [
+            new Wall(canvas.width/6-100,500,200,100,""),
+            new Wall(canvas.width/6*3-100,500,200,100,""),
+            new Wall(canvas.width/6*5-100,500,200,100,""),
+        ];
 
         var FPS = 30;
         var timer = setInterval(loop,1000/FPS);
         function loop()
-        {   context.fillStyle = "white";
+        {   context.fillStyle = "black";
             context.fillRect(0,0,canvas.width, canvas.height);
 
             enemies.update();
             nave.update()
-            
+            stars.update();
             enemies.draw();
             nave.draw();
             hud.draw();
 
+            for(var i = 0; i<walls.length;i++)
+            {
+                walls[i].draw();
+            }
+
             if(nave.life == 0 || enemies.list.length == 0)
             {   context.font = "50px arial";
-                context.fillStyle = "black";
+                context.fillStyle = "white";
                 context.textAlign = "center";
                 context.textBaseline = "middle";
                 context.fillText("GAME OVER", canvas.width/2, canvas.height/2-25);

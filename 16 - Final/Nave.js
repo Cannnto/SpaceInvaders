@@ -11,7 +11,7 @@ class Nave extends Entity
         {   this.bullet.update();
             this.bullet.draw();
 
-            if(this.bullet.y < 0 || this.bullet.collide(enemies.list))
+            if(this.bullet.y < 0 || this.bullet.collide() || this.bullet.collideWall())
             {   this.bullet = null;
             }
         }
