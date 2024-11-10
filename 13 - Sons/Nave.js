@@ -4,7 +4,6 @@ class Nave extends Entity
         this.bullet = null;
         this.life = 3;
         this.score = 0;
-        this.deathSound = new Audio("death.wav");
     }
 
     update()

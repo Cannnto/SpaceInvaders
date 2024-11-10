@@ -8,6 +8,7 @@
 <body>
     <canvas id="canvas1"></canvas>
     <script src="Entity.js"></script>
+    <script src="Sounds.js"></script>
     <script src="Projectile.js"></script>
     <script src="Enemies.js"></script>
     <script src="Enemy.js"></script>
@@ -19,6 +20,7 @@
         canvas.width = innerWidth;
         canvas.height = innerHeight;
 
+        var sounds = new Sound();
         var nave = new Nave(100, 500, 100, 100, "nave3.0.png");
         var enemies = new Enemies(100, 100, 100, 100, "enemy.png");
         var hud = new Hud();
@@ -43,6 +45,7 @@
                 context.textBaseline = "middle";
                 context.fillText("GAME OVER", canvas.width/2, canvas.height/2-25);
                 context.fillText("YOUR SCORE:"+nave.score, canvas.width/2, canvas.height/2+25);
+                sounds.playDeathSound();
                 clearInterval(timer);
             }
         }

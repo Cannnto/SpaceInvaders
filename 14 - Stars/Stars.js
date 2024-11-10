@@ -1,9 +1,9 @@
 class Star {
-    constructor(x, y, size, speed) {
+    constructor(x, y, size) {
         this.x = x-size/2;
         this.y = y-size/2;
         this.size = size;
-        this.speed = speed;
+        this.speed = 15/this.size
     }
 
     draw() {
@@ -22,11 +22,12 @@ class Star {
 }
 
 class Stars {
-    constructor(maxStars, size, speed) {
+    constructor(maxStars) {
         this.stars = [];
         this.maxStars = maxStars;
         for(var i=0; i<this.maxStars; i++) {
-            this.stars.push(new Star(Math.floor(Math.random()*(canvas.width)), Math.floor(Math.random()*(canvas.height)), size, speed));
+            var starSize = Math.floor(Math.random() * 10) + 1;
+            this.stars.push(new Star(Math.floor(Math.random()*(canvas.width)), Math.floor(Math.random()*(canvas.height)), starSize));
         }
     }
 
