@@ -3,7 +3,7 @@ class Star {
         this.x = x-size/2;
         this.y = y-size/2;
         this.size = size;
-        this.speed = 15/this.size
+        this.speed = this.size/2
     }
 
     draw() {
