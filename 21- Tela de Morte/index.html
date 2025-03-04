@@ -51,6 +51,7 @@
         var secondTimerBackground = 0;
         var scoreTimer = 0;
         var mockScore = 0;
+        var retryTimer = 0;
 
         function menu()
         {   context.fillStyle = "black";
@@ -150,7 +151,6 @@
             context.fillStyle = "white";
             context.textAlign = "center";
             context.textBaseline = "middle";
-            console.log(timerBackground)
             if (timerBackground < 10){
                 timerBackground+=0.25;
             } else {
@@ -166,7 +166,14 @@
                         } else {
                             mockScore+=8;
                         }
-                        context.fillText("YOUR SCORE:"+Math.min(nave.score, mockScore), canvas.width/2, canvas.height/2+25);
+                        context.fillText("YOUR SCORE: "+Math.min(nave.score, mockScore), canvas.width/2, canvas.height/2+25);
+                        if(mockScore >= nave.score && retryTimer < 100){
+                            retryTimer+=2;
+                        }
+                        txt(canvas.width/2, canvas.height/2+150, 'RETRY?', 50, "rgba(255,255,255,"+retryTimer/100+")");
+                        if(retryTimer >= 100 && keys[13]){
+                            window.location.reload();
+                        }   
                     }
                 }
             }
