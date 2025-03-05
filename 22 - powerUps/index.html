@@ -22,11 +22,15 @@
     <script src="Wall.js"></script>
     <script src="Stars.js"></script>
     <script src="Hud.js"></script>
+    <script src="powerUps.js"></script>
     <script>
         var canvas = document.getElementById("canvas1");
         var context = canvas.getContext("2d");
         canvas.width = innerWidth;
         canvas.height = innerHeight;
+
+        var FPS = 30;
+        var timer = setInterval(menu, 1000/FPS);
 
         var sounds = new Sound();
         var nave = new Nave(100, 650, 100, 100, "nave3.0.png");
@@ -42,9 +46,6 @@
             new Wall(canvas.width/6*5-100,500,200,100,""),
         ];
         var keys = [];
-
-        var FPS = 30;
-        var timer = setInterval(menu, 1000/FPS);
 
         var timerBackground = 0;
         var positionUpperText = 0;
@@ -99,6 +100,7 @@
         {   context.fillStyle = "black";
             context.fillRect(0,0,canvas.width, canvas.height);
 
+            powerUps.update();
             enemies.update();
             nave.update()
             stars.update();
@@ -110,32 +112,10 @@
             {   walls[i].draw();
             }
 
-            if(keys[65])
-            {   nave.x-=10;
-            }
-            if(keys[68])
-            {   nave.x+=10;
-            }
-            if(keys[87])
-            {   nave.y-=10;
-            }
-            if(keys[83])
-            {   nave.y+=10;
-            }
-
-            if(keys[69] && !nave.bullet)
-            {   nave.fire();
-            }
-
             if(enemies.list.length == 0)
-            {   context.font = "50px arial";
-                context.fillStyle = "white";
-                context.textAlign = "center";
-                context.textBaseline = "middle";
-                context.fillText("GAME OVER", canvas.width/2, canvas.height/2-25);
-                context.fillText("YOUR SCORE:"+nave.score, canvas.width/2, canvas.height/2+25);
-                sounds.deathSound.play();
+            {   sounds.deathSound.play();
                 clearInterval(timer);
+                timer = setInterval(deathScreen, 1000/FPS);
             }
             if (nave.life == 0){
                 sounds.deathSound.play();
@@ -170,7 +150,7 @@
                         if(mockScore >= nave.score && retryTimer < 100){
                             retryTimer+=2;
                         }
-                        txt(canvas.width/2, canvas.height/2+150, 'RETRY?', 50, "rgba(255,255,255,"+retryTimer/100+")");
+                        txt(canvas.width/2, canvas.height/2+150, 'Play Again?', 50, "rgba(255,255,255,"+retryTimer/100+")");
                         if(retryTimer >= 100 && keys[13]){
                             window.location.reload();
                         }   
