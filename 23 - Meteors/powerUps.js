@@ -4,7 +4,7 @@ class powerUps {
     static update()
     {
         for(var i = 0; i<this.powers.length; i++)
-        {   
+        {
             this.powers[i].update();
             this.powers[i].draw();
             var test = this.powers[i].test(nave);
