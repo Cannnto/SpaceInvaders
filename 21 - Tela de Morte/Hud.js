@@ -11,6 +11,8 @@ class Hud
     {   context.font = "50px arial";
         context.fillStyle = "cyan";
         context.textBaseline = "middle";
+        context.textAlign = 'left';
+
         context.fillText(nave.life,50,50);
 
         context.drawImage(this.lifeImg,0,30,32,32);
