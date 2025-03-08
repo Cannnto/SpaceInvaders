@@ -127,12 +127,7 @@
             {   nave.fire();
             }
 
-            if(enemies.list.length == 0){
-                sounds.deathSound.play();
-                clearInterval(timer);
-                timer = setInterval(deathScreen, 1000/FPS);
-            }
-            if (nave.life == 0){
+            if (nave.life == 0 || enemies.list.length == 0){
                 sounds.deathSound.play();
                 clearInterval(timer);
                 timer = setInterval(deathScreen, 1000/FPS);
@@ -173,8 +168,6 @@
                 }
             }
         }
-
-
 
         document.addEventListener("keydown",movimentoD);
         document.addEventListener("keyup",  movimentoU);

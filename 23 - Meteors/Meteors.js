@@ -3,44 +3,26 @@ class Meteors {
     {
         this.type = type
         this.objects = [];
-        for(var y = canvas.height, n = 0; y > 0;)
+        for(var y = canvas.height, n = 0; y > -canvas.height*.1; n++)
         {   
             var distance = (Math.random()*canvas.height/10);
             this.objects.push(new this.type(y-distance, 50+distance));
 
-            if(n != 0)
-            {
-                if(this.objects[n].y <= this.objects[n].y)
-                {
-                    y = this.objects[n].y;
-                    
-                }else{
-                    y = this.objects[n-1].y;
-                }
-            }
-
-            n++
+            y = this.objects[n].y;
         }
     }
 
     update(actor)
-    {   var y = this.objects[this.objects.length - 1].y
-        for(var i = 0; i<this.objects.length; i++)
+    {   for(var i = 0; i<this.objects.length; i++)
         {
             this.objects[i].update();
             this.objects[i].draw();
-            this.objects[i].test(actor)
+            this.objects[i].test(actor);
             
             if(this.objects[i].y >= canvas.height)
-            {
-                this.objects.splice(i,1)
-                i--
+            {   this.objects[i].y = 0-this.objects[i].height;
+                
             }
-        }
-        console.log(this.objects)
-        if(y >= -50)
-        {   var distance = (Math.random()*canvas.height/5)
-            this.objects.push(new this.type(y-distance, 50+distance))
         }
     }
 }
@@ -57,7 +39,8 @@ class meteor extends Entity{
     }
 
     draw()
-    {   // context.fillStyle = 'green';
+    {   
+        // context.fillStyle = 'green';
         // context.fillRect(this.x, this.y,this.width,this.height);
         
         context.fillStyle = `rgb(${this.color},${this.color},${this.color})`;

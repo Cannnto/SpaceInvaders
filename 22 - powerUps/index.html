@@ -38,6 +38,7 @@
         var enemies = new Enemies(100, 100, 100, 100);
         var hud = new Hud();
         var stars = new Stars(50);
+        var powers = new powerUps();
         var MenuOptions = 0;
 
         var walls = [
@@ -100,7 +101,7 @@
         {   context.fillStyle = "black";
             context.fillRect(0,0,canvas.width, canvas.height);
 
-            powerUps.update();
+            powers.update();
             enemies.update();
             nave.update()
             stars.update();
@@ -112,12 +113,7 @@
             {   walls[i].draw();
             }
 
-            if(enemies.list.length == 0)
-            {   sounds.deathSound.play();
-                clearInterval(timer);
-                timer = setInterval(deathScreen, 1000/FPS);
-            }
-            if (nave.life == 0){
+            if (nave.life == 0 || enemies.list.length == 0){
                 sounds.deathSound.play();
                 clearInterval(timer);
                 timer = setInterval(deathScreen, 1000/FPS);

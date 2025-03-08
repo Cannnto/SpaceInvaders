@@ -35,8 +35,8 @@ class Enemies
     }
     fire()
     {   let enemy = this.list[Math.trunc(Math.random()*(this.list.length))];
-        let RNG = Math.floor(Math.random() * 10) + 1;
-        RNG <=8 ? this.bullet = new ProjectileEnemy(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20) :
+        
+        Math.random() <= .8 ? this.bullet = new ProjectileEnemy(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20) :
         this.bullet = new ProjectileEnemyBig(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20);
     }
 

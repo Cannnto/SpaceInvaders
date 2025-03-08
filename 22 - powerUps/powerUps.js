@@ -1,7 +1,9 @@
 class powerUps {
-    static powers = [];
+    constructor()
+    {   this.powers = [];
+    }
 
-    static update()
+    update()
     {
         for(var i = 0; i<this.powers.length; i++)
         {   

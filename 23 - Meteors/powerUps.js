@@ -1,9 +1,10 @@
 class powerUps {
-    static powers = [];
+    constructor()
+    {   this.powers = [];
+    }
 
-    static update()
-    {
-        for(var i = 0; i<this.powers.length; i++)
+    update()
+    {   for(var i = 0; i<this.powers.length; i++)
         {
             this.powers[i].update();
             this.powers[i].draw();
