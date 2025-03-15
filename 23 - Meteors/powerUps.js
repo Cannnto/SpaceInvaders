@@ -10,14 +10,14 @@ class powerUps {
             this.powers[i].draw();
             var test = this.powers[i].test(nave);
 
-            if(this.powers[i].y > canvas.height)
-            {
-                this.powers.splice(i , 1);
+            if(this.powers[i].test(nave)){
+                this.powers.splice(i, 1);
                 i--;
             }
 
-            if(test){
-                this.powers.splice(i,1);
+            if(this.powers[i].y > canvas.height){
+                this.powers.splice(i, 1);
+                i--;
             }
         }
 
@@ -31,7 +31,7 @@ class powerUps {
 class power extends Entity{
     constructor(img)
     {
-        super(Math.random()*canvas.width, Math.random()*canvas.height/2, 30, 30, img);
+        super(Math.random()*canvas.width, -45, 45, 45, img);
     }
 
     update()
