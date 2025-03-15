@@ -1,7 +1,7 @@
 class Meteors {
     constructor(type)
     {
-        this.type = type
+        this.type = type;
         this.objects = [];
         for(var y = canvas.height, n = 0; y > -canvas.height*.1; n++)
         {   
@@ -21,7 +21,6 @@ class Meteors {
             
             if(this.objects[i].y >= canvas.height)
             {   this.objects[i].y = 0-this.objects[i].height;
-                
             }
         }
     }

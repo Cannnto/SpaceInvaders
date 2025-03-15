@@ -8,14 +8,8 @@ class powerUps {
         {
             this.powers[i].update();
             this.powers[i].draw();
-            var test = this.powers[i].test(nave);
 
-            if(this.powers[i].test(nave)){
-                this.powers.splice(i, 1);
-                i--;
-            }
-
-            if(this.powers[i].y > canvas.height){
+            if(this.powers[i].test(nave) || this.powers[i].y > canvas.height){
                 this.powers.splice(i, 1);
                 i--;
             }
