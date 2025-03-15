@@ -35,8 +35,8 @@ class Enemies
     }
     fire()
     {   let enemy = this.list[Math.trunc(Math.random()*(this.list.length))];
-        Math.random() <= .8 ? this.bullet = new ProjectileEnemy(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20) :
-        this.bullet = new ProjectileEnemyBig(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20);
+        this.bullet = Math.random() <= .8 ? new ProjectileEnemy(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20) :
+        new ProjectileEnemyBig(enemy.x+enemy.width/2, enemy.y+enemy.height/2, 10, 20);
     }
 
     draw()
