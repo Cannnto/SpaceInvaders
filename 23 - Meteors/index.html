@@ -123,8 +123,8 @@
         function deathScreen(){
             context.fillStyle = "rgba(0,0,0,"+timerBackground/100+")";
             context.fillRect(0,0,canvas.width, canvas.height);
-            context.font = "50px arial";
-            context.fillStyle = "white";
+            context.font = "bold 70px arial";
+            context.fillStyle = "red";
             context.textAlign = "center";
             context.textBaseline = "middle";
             if (timerBackground < 10){
@@ -133,6 +133,7 @@
                 timerBackground = 100;
                 positionUpperText+=4;
                 context.fillText("GAME OVER", canvas.width/2, Math.min(canvas.height/2-25, positionUpperText));
+                context.fillStyle = "white";
                 if (positionUpperText >= canvas.height/2-25){
                     if(secondTimerBackground < FPS){
                     secondTimerBackground++;
@@ -142,6 +143,7 @@
                         } else {
                             mockScore+=8;
                         }
+                        context.font = "50px arial";
                         context.fillText("YOUR SCORE: "+Math.min(nave.score, mockScore), canvas.width/2, canvas.height/2+25);
                         if(mockScore >= nave.score && retryTimer < 100){
                             retryTimer+=2;
