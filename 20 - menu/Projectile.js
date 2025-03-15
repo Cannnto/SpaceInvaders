@@ -49,13 +49,13 @@ class ProjectileEnemyBig extends ProjectileEnemy{
     constructor(x,y,width,height)
     {   super(x,y,width,height);
         this.color = "purple";
-        this.speed = 1;
-        this.accel = 1.5;
+        this.speed = 0;
+        this.accel = 3;
     }
 
     update(){
-        this.y += Math.min(Math.max(1, this.speed),30);
-        this.speed+=this.accel;
+        this.y += this.speed;
+        this.speed += this.accel;
         this.width+=2;
         this.height+=4;
         this.x -= 2;
